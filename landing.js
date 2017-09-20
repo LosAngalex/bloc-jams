@@ -1,4 +1,5 @@
- var pointsArray = document.getElementsByClassName('point');
+//Old Version
+/* var pointsArray = document.getElementsByClassName('point');
  
  var animatePoints = function(point) {
      
@@ -25,3 +26,34 @@
          }
      });
  }
+ 
+ */
+ 
+ 
+ var pointsArray = document.getElementsByClassName('point');
+
+var animatePoints = function(point) {
+
+    var revealPoint = function(pointIndex) {
+        pointIndex.style.opacity = 1;
+        pointIndex.style.transform = "scaleX(1) translateY(0)";
+        pointIndex.style.msTransform = "scaleX(1) translateY(0)";
+        pointIndex.style.WebkitTransform = "scaleX(1) translateY(0)"
+    };
+   
+    
+    forEach(points, revealPoint);
+    // revealPoint(points[i])
+};
+
+window.onload = function() {
+      if (window.innerHeight > 950) {
+        animatePoints(pointsArray);
+    }
+    
+window.addEventListener('scroll', function(event) {
+                if (pointsArray[0].getBoundingClientRect().top <= 500) {
+            animatePoints(pointsArray);   
+        }
+    });
+}
