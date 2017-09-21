@@ -13,7 +13,7 @@
          { title: 'Magenta', duration: '2:15'}
      ]
  };
- 
+
  // Another Example Album
  var albumMarconi = {
      title: 'The Telephone',
@@ -55,7 +55,7 @@
       + '  <td class="song-item-duration">' + songLength + '</td>'
       + '</tr>'
       ;
- 
+
      return template;
  };
 
@@ -66,36 +66,36 @@
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
+
      // #2
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
- 
+
      // #3
      albumSongList.innerHTML = '';
- 
+
      // #4
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
- 
+
  window.onload = function() {
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      setCurrentAlbum(albumPicasso);
- 
+
      var albums = [albumPicasso, albumMarconi, albumAlex];
      var index = 1;
 
      albumImage.addEventListener ("click", function(event) {
-        setCurrentAlbum(index);
-        index ++;
+        setCurrentAlbum(albums[index]);
+        index++;
          if (index == albums.length) {
-             index = 0; 
+             index = 0;
          }
-    
+
      });
-    
+
 };
