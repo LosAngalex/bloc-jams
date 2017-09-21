@@ -37,7 +37,7 @@
      artist: 'Alex garcia',
      label: 'CA',
      year: '2017',
-     albumArtUrl: 'assets/images/boat.png'
+     albumArtUrl: 'assets/images/boat.png',
      songs: [
          { title: 'Hello, Operator?', duration: '1:01' },
          { title: 'Ring, ring, ring', duration: '5:01' },
@@ -83,13 +83,14 @@
  };
  
  window.onload = function() {
+     var albumImage = document.getElementsByClassName('album-cover-art')[0];
      setCurrentAlbum(albumPicasso);
  
      var albums = [albumPicasso, albumMarconi, albumAlex];
      var index = 1;
 
      albumImage.addEventListener ("click", function(event) {
-        setCurrentAlbums [index]);
+        setCurrentAlbum(index);
         index ++;
          if (index == albums.length) {
              index = 0; 
