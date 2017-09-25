@@ -98,9 +98,9 @@ var songRows = document.getElementsByClassName('album-view-song-item');
          if (event.target.parentElement.className === 'album-view-song-item') {
              event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
          }
-         }
+         });
          
-     });
+     //});
      
     for (var i = 0; i < songRows.length; i++) {
         songRows[i].addEventListener('mouseleave', function(event) {
