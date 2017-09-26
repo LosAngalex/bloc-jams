@@ -82,7 +82,24 @@
      }
  };
 
+
 var getSongItem = function(element) {
+    switch (element.className) {
+        case 'album-song-button':
+        case 'ion-play':
+        case 'ion-pause':
+            return findParentByClassName(element, 'song-item-number');
+        case 'album-view-song-item':
+            return element.querySelector('.song-item-number');
+        case 'song-item-title':
+        case 'song-item-duration':
+            return findParentByClassName(element, 'album-view-song-item').querySelector('.song-item-number');
+        case 'song-item-number':
+            return element;
+        default:
+            return;
+    }  
+};
     
 };
 
@@ -122,7 +139,7 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      setCurrentAlbum(albumPicasso);
      
-/*var findParentByClassName = function(element, targetClass) {
+var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
@@ -130,7 +147,7 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
         }
         return currentParent;
     }
-}; */
+}; 
      
 songListContainer.addEventListener('mouseover', function(event) {
          if (event.target.parentElement.className === 'album-view-song-item') {
