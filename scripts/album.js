@@ -118,6 +118,16 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      setCurrentAlbum(albumPicasso);
      
+     var findParentByClassName = function(element, targetClass) {
+    if (element) {
+        var currentParent = element.parentElement;
+        while (currentParent.className !== targetClass && currentParent.className !== null) {
+            currentParent = currentParent.parentElement;
+        }
+        return currentParent;
+    }
+};
+     
      songListContainer.addEventListener('mouseover', function(event) {
          if (event.target.parentElement.className === 'album-view-song-item') {
 
