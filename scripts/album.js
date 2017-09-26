@@ -82,17 +82,21 @@
      }
  };
 
-var clickHandler = function(targetElement) {
+var getSongItem = function(element) {
     
+};
+
+var clickHandler = function(targetElement) {
     var songItem = getSongItem(targetElement);  
     
     if (currentlyPlayingSong === null) {
-    songItem.innerHTML = pauseButtonTemplate;
-    currentlyPlayingSong = songItem.getAttribute('data-song-number');
+        songItem.innerHTML = pauseButtonTemplate;
+        currentlyPlayingSong = songItem.getAttribute('data-song-number');
         
     } else if (currentlyPlayingSong === songItem.getAttribute('data-song-number')) {
-    songItem.innerHTML = playButtonTemplate;
-    currentlyPlayingSong = null;
+        songItem.innerHTML = playButtonTemplate;
+        currentlyPlayingSong = null;
+        
     } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
         var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
@@ -118,7 +122,7 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      setCurrentAlbum(albumPicasso);
      
-     var findParentByClassName = function(element, targetClass) {
+/*var findParentByClassName = function(element, targetClass) {
     if (element) {
         var currentParent = element.parentElement;
         while (currentParent.className !== targetClass && currentParent.className !== null) {
@@ -126,12 +130,18 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
         }
         return currentParent;
     }
-};
+}; */
      
-     songListContainer.addEventListener('mouseover', function(event) {
+songListContainer.addEventListener('mouseover', function(event) {
          if (event.target.parentElement.className === 'album-view-song-item') {
 
 event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+        var songItem = getSongItem(event.target);
++
++       if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
++           songItem.innerHTML = playButtonTemplate;
++            }
+         
          }
          
     });
