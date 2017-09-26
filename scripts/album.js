@@ -100,10 +100,9 @@ var getSongItem = function(element) {
             return;
     }  
 };
-    
-};
 
 var clickHandler = function(targetElement) {
+    
     var songItem = getSongItem(targetElement);  
     
     if (currentlyPlayingSong === null) {
