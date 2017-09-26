@@ -139,7 +139,15 @@ event.target.parentElement.querySelector('.song-item-number').innerHTML = playBu
      
 for (var i = 0; i < songRows.length; i++) {
     songRows[i].addEventListener('mouseleave', function(event) {
-        this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+        
+            // #1
+            var songItem = getSongItem(event.target);
+            var songItemNumber = songItem.getAttribute('data-song-number');
+ 
+             // #2
+             if (songItemNumber !== currentlyPlayingSong) {
+                 songItem.innerHTML = songItemNumber;
+             }
          });
 
 songRows[i].addEventListener('click', function(event) {
@@ -148,7 +156,7 @@ songRows[i].addEventListener('click', function(event) {
 }
 
 
-     var albums = [albumPicasso, albumMarconi, albumAlex];
+var albums = [albumPicasso, albumMarconi, albumAlex];
      var index = 1;
 
      albumImage.addEventListener ("click", function(event) {
