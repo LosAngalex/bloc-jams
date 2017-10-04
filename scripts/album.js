@@ -1,3 +1,21 @@
+var setSong = function(songNumber){
+    currentlyPlayingSongNumber = parseInt(songNumber);
+    currentSongFromAlbum = currentAlbum.songs[songNumber -1];
+};
+
+var getSongNumberCell = function(number) {
+    return $('.song-item-number[date-song-number="' + number + '"]');
+};
+
+
+var getSong = function(songNumber) {    currentlyPlayingSongNumber = parseInt(songNumber); 
+ currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+};
+
+var getSongNumberCell = function(number) {
+    return $('.song-item-number[date-song-number="' + number + '"]');
+}
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -10,7 +28,7 @@ var createSongRow = function(songNumber, songName, songLength) {
       var $row = $(template);
 
      var clickHandler = function() {
-        var songNumber = $(this).attr('data-song-number');
+        var songNumber = parseInt($(this).attr('data-song-number'));
 
         if (currentlyPlayingSongNumber !== null) {
 
@@ -37,7 +55,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 
      var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
-        var songNumber = songNumberCell.attr('data-song-number');
+        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(playButtonTemplate);
@@ -46,11 +64,12 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 
       var offHover = function(event) {
-        var songNumberCell = $(this).find('.song-item-number');
+        var songNumberCell = parseInt($(this).find('.song-item-number'));
         var songNumber = songNumberCell.attr('data-song-number');
 
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(songNumber);
+       
         }
 
      };
