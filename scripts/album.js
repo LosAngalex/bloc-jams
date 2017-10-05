@@ -58,7 +58,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             updateSeekBarWhileSongPlays();
             currentSongFromAlbum = currentAlbum.songs [songNumber - 1];
             
-            var $volumeFill = $'.volume.fill');
+            var $volumeFill = $('.volume.fill');
             var $volumeThumb = $('.volume .thumb');
             $volumeFill.width(currentVolume + '%');
             $volumeThumb.css({left: currentVolume + '%'});
@@ -68,6 +68,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             setSong(songNumber);    		
             currentSoundFile.play();
             updatePlayerBarSong();
+
 
       	   } else if (currentlyPlayingSongNumber === songNumber) {
 
