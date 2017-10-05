@@ -284,6 +284,23 @@ var trackIndex = function(album, song) {
     $('.main-controls .play-pause').html(playerBarPauseButton);
 };
 
+function togglePlayFromPlayerBar() {
+    var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+    if (currentSoundFile.isPaused()) {
+        $(this).html(playerBarPauseButton);
+        $(currentlyPlayingCell).html(pauseButtonTemplate);
+               
+                currentSoundFile.play();
+    }
+    else if(currentSoundFile) {
+        $(this).html(playerBarPlayButton);
+        $(currentlyPlayingCell).html(playButtonTemplate);
+               
+                currentSoundFile.pause();
+    }
+}
+
+
 // Album button templates
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
@@ -308,26 +325,11 @@ var $nextButton = $('.main-controls .next');
      setupSeekBars();
      $nextButton.click(nextSong);
      
- //Assignment 32
- //Does not work, commenting out. 
+ 
      
- /*var mainControl = function() {
-     $('.main-controls .play-pause').click(togglePlayFromPlayerBar){
+ var mainControl =  $('.main-controls .play-pause');
+ 
+ mainControl.click(togglePlayFromPlayerBar)
          
-     }
-};
- */
-
-    //  var albums = [albumPicasso, albumMarconi, albumAlex];
-    // var index = 1;
-    //
-    // albumImage.addEventListener ("click", function(event) {
-    //    setCurrentAlbum(albums[index]);
-    //    index++;
-    //     if (index == albums.length) {
-    //         index = 0;
-    //     }
-    //
-    // });
-
+     
 });
