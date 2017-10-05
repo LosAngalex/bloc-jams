@@ -1,3 +1,4 @@
+//checkpoint 31 assignment 
 var setSong = function(songNumber){
     if (currentSoundFile) {
         currentSoundFile.stop();
@@ -46,23 +47,18 @@ var createSongRow = function(songNumber, songName, songLength) {
         var songNumber = parseInt($(this).attr('data-song-number'));
 
         if (currentlyPlayingSongNumber !== null) {
-
-      		// var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
-          var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
-              currentlyPlayingCell.html(currentlyPlayingSongNumber);
+        var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+          currentlyPlayingCell.html(currentlyPlayingSongNumber);
 
       	}
 
         if (currentlyPlayingSongNumber !== songNumber) {
 
       		$(this).html(pauseButtonTemplate);
-
-
-          setSong(songNumber);
-      		  // currentlyPlayingSongNumber = songNumber;
-            //   currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+            setSong(songNumber);
+      		
             currentSoundFile.play();
-              updatePlayerBarSong();
+            updatePlayerBarSong();
 
       	   } else if (currentlyPlayingSongNumber === songNumber) {
 
