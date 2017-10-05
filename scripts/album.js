@@ -55,8 +55,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         if (currentlyPlayingSongNumber !== songNumber) {
 
       		$(this).html(pauseButtonTemplate);
-            setSong(songNumber);
-      		
+            setSong(songNumber);    		
             currentSoundFile.play();
             updatePlayerBarSong();
 
@@ -191,9 +190,6 @@ var setupSeekBars = function() {
  };
 
 
-
-
-
 var trackIndex = function(album, song) {
   return album.songs.indexOf(song);
 };
@@ -300,6 +296,16 @@ var $nextButton = $('.main-controls .next');
      $previousButton.click(previousSong);
      setupSeekBars();
      $nextButton.click(nextSong);
+     
+ //Assignment 32
+ //Does not work, commenting out. 
+     
+ /*var mainControl = function() {
+     $('.main-controls .play-pause').click(togglePlayFromPlayerBar){
+         
+     }
+};
+ */
 
     //  var albums = [albumPicasso, albumMarconi, albumAlex];
     // var index = 1;
