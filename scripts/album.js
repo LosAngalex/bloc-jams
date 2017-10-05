@@ -53,6 +53,16 @@ var createSongRow = function(songNumber, songName, songLength) {
       	}
 
         if (currentlyPlayingSongNumber !== songNumber) {
+            setSong(songNumber);
+            currentSoundFile.play();
+            updateSeekBarWhileSongPlays();
+            currentSongFromAlbum = currentAlbum.songs [songNumber - 1];
+            
+            var $volumeFill = $'.volume.fill');
+            var $volumeThumb = $('.volume .thumb');
+            $volumeFill.width(currentVolume + '%');
+            $volumeThumb.css({left: currentVolume + '%'});
+            
 
       		$(this).html(pauseButtonTemplate);
             setSong(songNumber);    		
@@ -73,7 +83,7 @@ var createSongRow = function(songNumber, songName, songLength) {
       	 }
       };
 
-     var onHover = function(event) {
+ var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 
@@ -83,7 +93,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     };
 
 
-      var offHover = function(event) {
+ var offHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 
@@ -141,7 +151,7 @@ var updateSeekBarWhileSongPlays = function() {
  };
 
 
-    var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
+var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
         // #1
         offsetXPercent = Math.max(0, offsetXPercent);
