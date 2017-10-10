@@ -1,4 +1,4 @@
-//checkpoint 31 assignment 
+//checkpoint 31 assignment
 var setSong = function(songNumber){
     if (currentSoundFile) {
         currentSoundFile.stop();
@@ -57,17 +57,18 @@ var createSongRow = function(songNumber, songName, songLength) {
             currentSoundFile.play();
             updateSeekBarWhileSongPlays();
             currentSongFromAlbum = currentAlbum.songs [songNumber - 1];
-            
-            var $volumeFill = $('.volume.fill');
+
+            var $volumeFill = $('.volume .fill');
             var $volumeThumb = $('.volume .thumb');
             $volumeFill.width(currentVolume + '%');
             $volumeThumb.css({left: currentVolume + '%'});
-            
+
 
       		$(this).html(pauseButtonTemplate);
-            setSong(songNumber);    		
+            setSong(songNumber);
             currentSoundFile.play();
             updatePlayerBarSong();
+            updateSeekBarWhileSongPlays();
 
 
       	   } else if (currentlyPlayingSongNumber === songNumber) {
@@ -76,6 +77,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                 $(this).html(pauseButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPauseButton);
                 currentSoundFile.play();
+                updateSeekBarWhileSongPlays();
            } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
@@ -160,7 +162,7 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
 
     // #2
     var percentageString = offsetXPercent + '%';
-    $seekBar.find('.fill').width(percentageString);
+    $seekBar.find('.fill').css({width: percentageString});
     $seekBar.find('.thumb').css({left: percentageString});
  };
 
@@ -297,26 +299,26 @@ function togglePlayFromPlayerBar() {
     if (currentSoundFile.isPaused()) {
         $(this).html(playerBarPauseButton);
         $(currentlyPlayingCell).html(pauseButtonTemplate);
-               
+
                 currentSoundFile.play();
     }
     else if(currentSoundFile) {
         $(this).html(playerBarPlayButton);
         $(currentlyPlayingCell).html(playButtonTemplate);
-               
+
                 currentSoundFile.pause();
     }
 }
 function setCurrentTimeInPlayerBar(currentTime) {
     $('.current-time').text(currentTime);
-    
+
 }
 
 function setTotalTimeInPlayerBar(totalTime) {
     $('.total-time').text(totalTime);
-    
+
 }
-    
+
 
 
 
@@ -343,12 +345,12 @@ var $nextButton = $('.main-controls .next');
      $previousButton.click(previousSong);
      setupSeekBars();
      $nextButton.click(nextSong);
-     
- 
-     
+
+
+
  var mainControl =  $('.main-controls .play-pause');
- 
+
  mainControl.click(togglePlayFromPlayerBar)
-         
-     
+
+
 });
